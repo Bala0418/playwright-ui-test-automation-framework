@@ -1,14 +1,55 @@
 {
   "name": "playwright-ui-test-automation-framework",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {},
+  "description": "This is a skeleton framework for easily starting a new UI automation project with playwright, using typescript",
   "keywords": [],
-  "author": "",
+  "author": "Balazs Radocz",
   "license": "ISC",
+
+  "engines": {
+    "npm": "^10.4.0"
+  },
+  "scripts": {
+    "build": "tsc && (cd function && npm run build)",
+    "playwright-install": "npx playwright install",
+    "postinstall": "(cd function && npm install)",
+    "watch": "tsc -w",
+    "test": "npm run clean && npx playwright test",
+    "clean": "rimraf ./allure-report/ ./allure-results",
+    "report": "allure generate allure-results -o allure-report --clean && allure open allure-report",
+    "prepare": "husky install",
+    "format-check": "prettier --check \"*.{ts,js}\"",
+    "format": "prettier --write \"*.{ts,js}\"",
+    "lint-check": "eslint \"*/**/*.ts\"",
+    "lint": "eslint --fix \"*/**/*.ts\""
+  },
   "devDependencies": {
     "@playwright/test": "^1.48.1",
-    "@types/node": "^22.8.0"
+    "@types/node": "^22.8.0",
+    "@typescript-eslint/eslint-plugin": "^8.12.2",
+    "@typescript-eslint/parser": "^8.12.2",
+    "allure-playwright": "^3.0.5",
+    "constructs": "^10.4.2",
+    "eslint": "^9.13.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-promise": "^7.1.0",
+    "eslint-plugin-standard": "^5.0.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@types/uuid": "^10.0.0",
+    "uuid": "^10.0.0",
+    "allure-commandline": "^2.32.0",
+    "dotenv": "^16.4.5",
+    "rimraf": "^6.0.1",
+    "source-map-support": "^0.5.21"
   }
 }
